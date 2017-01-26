@@ -12,12 +12,14 @@
 ## New Installation of Windows Core
 - Windows Core Install starts in cmd.exe
 - If close automatically, can enter <Ctrl><Alt><Del> to run Task Manager and run a new task.
-- Some available progrms:
+- Some available programs:
 ```
 taskmgr
 regedit
 timedate.cpl
 intl.cpl
+msinfo32
+sconfig.cmd
 ```
 
 ## Convert Server Core to Server with GUI
