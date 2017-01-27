@@ -18,7 +18,10 @@
 svcs ftp                # Check status of ftp service (default: disabled)
 svcadm enable ftp       # Enables FTP
 svcs -xv svc:/network/ftp:default       # Run for troubleshooting
+```
 
+# Basic FTP Usage
+```
 ftp
 ftp -i                  # Opens FTP and turns off interactive mode so mget/mput
                         # will not ask for confirmation.
@@ -26,23 +29,23 @@ ftp -i                  # Opens FTP and turns off interactive mode so mget/mput
 # Basic FTP commands
 ```
 ftp> open 192.168.40.153
-ftp> put filename.txt
-ftp> mput *.*
+ftp> put filename.txt   # Transfer single file
 ```
 ## Local
 ```
 ftp> lcd            # Lists local directory, or changes local directory
 ftp> !ls            # Lists files in local directory - doesn't work with default Windows cmd.exe FTP
-ftp> !dir           # Lists files in local directory - works with Windows cmd.exe FTP
+ftp> !dir           # Lists files in local directory - works with MS FTP
 ```
 ## Remote
 ```
 ftp> get            # Retrieves files
+ftp> mget           # Retrieves multiple files
 ftp> put            # Sends one file
 ftp> mput           # Sends multiple files
 ```
 ## Transferring directories
-- FTP will not automatically create and transfer directories.
+- FTP will not automatically create and transfer directories when using `mput`.
 - A Bash script could be created to recursively transfer directories with their contents through FTP.
 
 ```
