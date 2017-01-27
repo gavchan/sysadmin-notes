@@ -3,9 +3,9 @@ Links:
 - [Oracle Docs: Apache Web Server](https://docs.oracle.com/cd/E53394_01/html/E54831/gnvhs.html)
 
 # Apache on Oracle Solaris
-- By default apache22 is installed but disabled.
+- By default apache22 is installed but disabled. One can check using either of the following:
 ```
-svcs *apache*
+svcs *apache*       # Or:
 svcs http
 ```
 - Can install newer version then enable the server.

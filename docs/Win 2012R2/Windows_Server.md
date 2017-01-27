@@ -31,7 +31,7 @@ Run: `Install-WindowsFeature Server-Gui-Mgmt-Infra,Server-Gui-Shell –Restart �
 Alternatively, if you want to use Windows Update as the source instead of a WIM file, use this Windows PowerShell cmdlet:
 `Install-WindowsFeature Server-Gui-Mgmt-Infra,Server-Gui-Shell –Restart`
 
-*Error message was noted when trying the above installations, specifying:*
+*If you get the following error message when trying the above installations:*
 ```
 Error: 0x800f081f
 
@@ -39,18 +39,25 @@ The source files could not be found.
 Use the "Source" option to specify the location of the files that are required to restore the feature. For more information
 on specifying a source location, see http://go.microsoft.com/fwlink/?LinkId=243077.
 ```
-**To solve this issue, see** [link here from Microsoft](https://support.microsoft.com/en-us/kb/2913316)
+**See this link to solve the issue.** [link here from Microsoft](https://support.microsoft.com/en-us/kb/2913316)
 
 First get the index number of desired installation for Non-core:
-```dism /get-wiminfo /wimfile:d:\sources\install.wim
+
 ```
+dism /get-wiminfo /wimfile:d:\sources\install.wim
+```
+
 Next can run the command with the index number:
-```Install-WindowsFeature Server-Gui-Mgmt-Infra,Server-Gui-Shell -Restart -Source wim:d:\sources\install.wim:2
+
+```
+Install-WindowsFeature Server-Gui-Mgmt-Infra,Server-Gui-Shell -Restart -Source wim:d:\sources\install.wim:2
 ```
 
 ## Convert Server with GUI to Server Core
 To convert to a Server Core installation with Windows PowerShell: run the following cmdlet:
-`Uninstall-WindowsFeature Server-Gui-Mgmt-Infra -Restart`
+```
+Uninstall-WindowsFeature Server-Gui-Mgmt-Infra -Restart
+```
 
 ## Features on Demand
 In previous versions of Windows, even if a server role or feature was disabled, the binary files for it were still present on the disk, consuming space. In Windows Server 2012, not only can you disable a role or feature, but you can also completely remove its files, a state shown as “removed” in Server Manager or “disabled with payload removed” in Dism.exe.
